@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+chatbot_memory.db
+
+# virtualenv
+venv/
+env/
+.venv/
+venv*/
+
+# logs
+*.log
+
+# env files / credentials
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+
+# distribution/build
+build/
+dist/
+*.egg-info/

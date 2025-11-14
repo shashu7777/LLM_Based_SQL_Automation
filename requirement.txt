@@ -1,0 +1,7 @@
+SQLAlchemy
+PyMySQL 
+cryptography
+langchain
+langchain-community
+tabulate
+langgraph-checkpoint-sqlite
