@@ -40,7 +40,6 @@ def connect_to_db(db_type:str, username:str, password:str, database_name:str) ->
     print("🔌 Calling connect_to_db...")
     return loop.run_until_complete(mcp.call_tool("connect_to_db", {
         "db_type": db_type,
-        "host": "localhost",
         "username": username,
         "password": password,
         "database_name": database_name
@@ -59,7 +58,13 @@ def get_schema() -> dict:
 def execute_query(query: str) -> dict:
     """Execute SQL query and return the result."""
     print("🚀 Calling execute_query...")
-    return loop.run_until_complete(mcp.call_tool("execute_query", {"query": query}))
+    schema=loop.run_until_complete(mcp.call_tool("execute_query", {"query": query}))
+    if schema.content:
+                content = schema.content
+                if '<br>' in content:
+                    # 1. Remove all <br> tags (case-insensitive)
+                    content = content.replace('<br>', ' ').replace('<BR>', ' ')
+    return content                
 
 @tool
 def generate_sql_query(request: str) -> dict:
@@ -135,7 +140,6 @@ conn = sqlite3.connect("chatbot_memory.db", check_same_thread=False)
 checkpointer = SqliteSaver(conn=conn)
 
 chatbot = graph.compile(checkpointer=checkpointer)
-
 
 # ---------------- MAIN EXECUTION ----------------
 thread_id = "sql_thread_1"
@@ -226,7 +230,7 @@ def generate_summary_from_message(first_message_content: str) -> str:
     )
     
     try:
-        response = gemini_model.invoke(prompt)
+        response = model.invoke(prompt)
         summary = response.content.strip().replace('.', '').replace('"', '')
         # Simple length check fallback
         return summary if len(summary.split()) <= 7 and len(summary) > 3 else first_message_content[:30] + '...'
@@ -263,4 +267,6 @@ def retrieve_all_threads() -> dict[str, str]:
 
 
 if __name__ == "__main__":
+    print(chatbot.get_graph().draw_png("graph.png"))
+
     pass

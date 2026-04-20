@@ -181,6 +181,4 @@ if user_input := st.chat_input("Type your message..."):
         st.rerun()
 
         
-    # Display assistant response
-    # st.chat_message("assistant").markdown(response)
-    # st.session_state["messages"].append({"role": "assistant", "content": response})
+

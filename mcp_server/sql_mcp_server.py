@@ -33,14 +33,14 @@ def save_connection_info(info):
 
 
 @mcp.tool
-def connect_to_db(db_type: str, host: str, username: str, password: str, database_name: str):
+def connect_to_db(db_type: str,username: str, password: str, database_name: str):
     """Connect once and save credentials to disk."""
     print("mcp connection db")
     with open("connect_to_db", "w") as f:
             json.dump({}, f)
     if "engine" in connections:
         return "✅ Already connected."
-
+    host="ecommerce-db.c1c24woi4isg.ap-south-1.rds.amazonaws.com"
     if db_type == "mysql":
         conn_str = f"mysql+pymysql://{username}:{password}@{host}/{database_name}"
     elif db_type == "postgresql":
