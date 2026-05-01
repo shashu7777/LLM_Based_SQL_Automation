@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+
+  mcp_server:
+    build:
+      context: .
+      dockerfile: mcp_server/Dockerfile
+    container_name: sql-mcp
+    restart: always
+    ports:
+      - "8000:8000"
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: langgraph_app/Dockerfile
+    container_name: sql-streamlit
+    restart: always
+    ports:
+      - "8501:8501"
+    depends_on:
+      - mcp_server
