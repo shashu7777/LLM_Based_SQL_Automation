@@ -2,7 +2,6 @@ venv
 __pycache__
 *.pyc
 *.db
-.env
 .git
 .gitignore
 node_modules

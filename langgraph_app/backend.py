@@ -2,22 +2,14 @@ from langgraph.graph import StateGraph, START, END
 from typing import TypedDict, Annotated
 from langchain_core.messages import BaseMessage, HumanMessage,SystemMessage
 from langgraph.graph.message import add_messages
-from sqlalchemy import create_engine, inspect, text
-from sqlalchemy.exc import SQLAlchemyError
-import pymysql
-from langchain_ollama import OllamaLLM
 from langchain_google_genai import ChatGoogleGenerativeAI
-from tabulate import tabulate
 from langchain_core.tools import tool
 from langgraph.prebuilt import ToolNode, tools_condition
 from dotenv import load_dotenv
 import os
 from langgraph.checkpoint.sqlite import SqliteSaver
 import sqlite3
-import re
-import ast
 from langchain_openai import ChatOpenAI
-
 import asyncio
 from mcp_client import MCPClientWrapper
 

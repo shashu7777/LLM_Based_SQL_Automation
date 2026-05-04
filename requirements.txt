@@ -1,7 +1,13 @@
 SQLAlchemy
-PyMySQL 
+PyMySQL
 cryptography
 langchain
 langchain-community
-tabulate
+langchain-core
+langchain-openai
+langchain-google-genai
 langgraph-checkpoint-sqlite
+tabulate
+streamlit
+python-dotenv
+fastmcp

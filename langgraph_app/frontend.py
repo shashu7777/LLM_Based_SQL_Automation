@@ -1,5 +1,5 @@
 import streamlit as st
-from app import chatbot, retrieve_all_threads, get_conversation_summary, get_response_from_chatbot
+from backend import chatbot, retrieve_all_threads, get_conversation_summary, get_response_from_chatbot
 from langchain_core.messages import HumanMessage
 import uuid
 import collections
