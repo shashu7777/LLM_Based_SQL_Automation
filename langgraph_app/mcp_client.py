@@ -5,7 +5,7 @@ from fastmcp import Client
 class MCPClientWrapper:
     """A wrapper for connecting to and calling MCP server tools dynamically."""
 
-    def __init__(self, base_url="http://localhost:8000/mcp"):
+    def __init__(self, base_url="http://sql-mcp:8000/mcp"):
         self.base_url = base_url
         self.client = None
         self.connected = False
